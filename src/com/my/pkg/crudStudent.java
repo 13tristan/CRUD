@@ -14,13 +14,13 @@ public class crudStudent {
     public void addStudent() {
         while (true) {
 
-            System.out.print("Enter Main.Main.Student Name: ");
+            System.out.print("Enter Student Name: ");
             String name = scanner.nextLine();
 
-            System.out.print("Enter Main.Main.Student Address: ");
+            System.out.print("Enter Student Address: ");
             String address = scanner.nextLine();
 
-            System.out.print("Enter Main.Main.Student Age: ");
+            System.out.print("Enter Student Age: ");
             String age = scanner.nextLine();
 
             System.out.print("Education Level: ");
@@ -41,7 +41,7 @@ public class crudStudent {
             arr.add(student); //Store it to the list
 
             System.out.println("\nAdded succesfully!!");
-            System.out.println("Main.Main.Student ID: " + id);
+            System.out.println("Student ID: " + id);
             scanner.nextLine();
             return;
         }
@@ -52,7 +52,7 @@ public class crudStudent {
     public void viewStudent() {
         //Check if the student is empty
         if (arr.isEmpty()) {
-            System.out.println("\nNo Main.Main.Student! You must add students first.");
+            System.out.println("\nNo Student! You must add students first.");
             scanner.nextLine();
             return;
         } else {
