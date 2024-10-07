@@ -9,7 +9,7 @@ public class crudStudent {
     Random random = new Random();
     Scanner scanner = new Scanner(System.in);
     List<Student> arr = new ArrayList<Student>();
-    int id;
+
     //Add student
     public void addStudent() {
         while (true) {
@@ -34,7 +34,7 @@ public class crudStudent {
 
 
             //Store generated id
-            id = generateId();
+            int id = generateId();
 
             //Assign the user input to the student constructor
             Student student = new Student(name, address, age, course, year, id);
