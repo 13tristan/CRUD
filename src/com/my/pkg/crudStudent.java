@@ -90,6 +90,10 @@ public class crudStudent {
 
         //Store the selected student into this
         Student selectedStudent = arr.get(index - 1);
+//        Student student = findStudentById(id);
+//        if (index == student.getId()) {
+//            System.out.println("Hello World");
+//        }
 
         //check if the index is valid
         if (index <= 0 || index > arr.size()) {
