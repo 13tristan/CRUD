@@ -9,7 +9,9 @@ public class crudStudent {
     Random random = new Random();
     Scanner scanner = new Scanner(System.in);
     List<Student> arr = new ArrayList<Student>();
-
+    //Store generated id
+    int id;
+    int id_student;
     //Add student
     public void addStudent() {
         while (true) {
@@ -34,13 +36,13 @@ public class crudStudent {
 
 
             //Store generated id
-            int id = generateId();
+            id = generateId();
 
             //Assign the user input to the student constructor
             Student student = new Student(name, address, age, course, year, id);
             arr.add(student); //Store it to the list
 
-            System.out.println("\nAdded succesfully!!");
+            System.out.println("\nAdded Success!!");
             System.out.println("Student ID: " + id);
             scanner.nextLine();
             return;
@@ -59,7 +61,7 @@ public class crudStudent {
             System.out.println("List of Students:");
             System.out.println("=====================");
 
-            for (int i = 0; i < arr.size(); i++) { //iterate thru list to print the students
+            for (int i = 0; i < arr.size(); i++) { //iterate list to print the students
                 Student student = arr.get(i);
                 System.out.println((i + 1) + ". " + student);
                 System.out.println("---------------------------");
@@ -83,27 +85,24 @@ public class crudStudent {
         viewStudent();
 
 
-        //Ask user which user to update
-        System.out.print("Enter the index of the student you want to update: ");
-        int index = scanner.nextInt();
-        scanner.nextLine();
+        Student student = findStudentById(id);
 
-        //Store the selected student into this
-        Student selectedStudent = arr.get(index - 1);
 
-//        Student student = findStudentById(id);
-//        if (index == student.getId()) {
-//            System.out.println("Hello World");
-//        }
+        do {
+            System.out.print("Enter the id of the student you want to update: ");
+            id_student = scanner.nextInt();
 
-        //check if the index is valid
-        if (index <= 0 || index > arr.size()) {
-            System.out.println("Invalid student index");
-            return;
+            if (id_student != student.getId()) {
+                System.out.println("Invalid Id, Please Try Again.");
+            }
+            else {
+                //If the index is valid
+                System.out.print("\nUpdating details for student id: " + student.getId() + "\n");
+                scanner.nextLine();
+            }
         }
+        while (id_student != student.getId());
 
-        //If the index is valid
-        System.out.print("\nUpdating details for student id: " + selectedStudent.getId() + "\n");
 
         while (true) {
             //Ask user to choose what to change
@@ -122,7 +121,7 @@ public class crudStudent {
                     System.out.print("->");
                     newName = scanner.nextLine();
                     if (!newName.isEmpty()) {
-                        selectedStudent.setName(newName);
+                        student.setName(newName);
                         System.out.println("***Name Updated***\n");
                     }
                 }
@@ -132,7 +131,7 @@ public class crudStudent {
                     System.out.print("->");
                     newAddress = scanner.nextLine();
                     if (!newAddress.isEmpty()) {
-                        selectedStudent.setAddress(newAddress);
+                        student.setAddress(newAddress);
                         System.out.println("***Address Updated***\n");
                     }
                 }
@@ -143,12 +142,12 @@ public class crudStudent {
                     System.out.print("->");
                     newAge = scanner.nextLine();
                     if (!newAge.isEmpty()) {
-                        selectedStudent.setAge(newAge);
+                        student.setAge(newAge);
                         System.out.println("***Age Updated***\n");
                     }
                 }
                 case "4" -> {
-                    System.out.println("Exitting...");
+                    System.out.println("Exiting...");
                     return;
                 }
                 default -> {
@@ -198,7 +197,7 @@ public class crudStudent {
                     Student selectedStudent = arr.get(index - 1);
                     arr.remove(selectedStudent);
 
-                    System.out.println("Main.Main.Student Removed!");
+                    System.out.println("Student Removed!");
                 }
                 case "2" -> {
                     arr.removeAll(arr);
@@ -207,7 +206,7 @@ public class crudStudent {
                     return;
                 }
                 case "3" -> {
-                    System.out.println("Exitting");
+                    System.out.println("Exiting");
                     scanner.nextLine();
                     return;
                 }
