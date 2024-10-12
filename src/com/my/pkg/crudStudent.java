@@ -11,7 +11,6 @@ public class crudStudent {
     List<Student> arr = new ArrayList<Student>();
     //Store generated id
     int id;
-    int id_student;
     //Add student
     public void addStudent() {
         while (true) {
@@ -85,24 +84,22 @@ public class crudStudent {
         viewStudent();
 
 
-        Student student = findStudentById(id);
 
 
-        do {
-            System.out.print("Enter the id of the student you want to update: ");
-            id_student = scanner.nextInt();
+        System.out.print("Enter the id of the student you want to update: ");
+        int id_student = scanner.nextInt();
 
-            if (id_student != student.getId()) {
-                System.out.println("Invalid Id, Please Try Again.");
-            }
-            else {
-                //If the index is valid
-                System.out.print("\nUpdating details for student id: " + student.getId() + "\n");
-                scanner.nextLine();
-            }
+        Student student = findStudentById(id_student);
+
+        if (student == null) {
+            System.out.println("Invalid Id, Please Try Again.");
+            return;
         }
-        while (id_student != student.getId());
 
+
+        //If the index is valid
+        System.out.print("\nUpdating details for student id: " + student.getId() + "\n");
+        scanner.nextLine();
 
         while (true) {
             //Ask user to choose what to change
@@ -189,7 +186,7 @@ public class crudStudent {
 
                     //check if the index is valid
                     if (index <= 0 || index > arr.size()) {
-                        System.out.println("Invalid student number");
+                        System.out.println("Invalid student index");
                         return;
                     }
 
