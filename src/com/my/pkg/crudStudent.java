@@ -75,7 +75,7 @@ public class crudStudent {
 
         //check if empty
         if (arr.isEmpty()) {
-            System.out.println("\nNo Main Student! You must add students first.");
+            System.out.println("\nNo Student! You must add students first.");
             scanner.nextLine();
             return;
         }
