@@ -9,6 +9,7 @@ public class crudStudent {
     Random random = new Random();
     Scanner scanner = new Scanner(System.in);
     List<Student> arr = new ArrayList<Student>();
+
     //Store generated id
     int id;
     //Add student
